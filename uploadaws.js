@@ -12,7 +12,7 @@ const uploadFile = () => {
     const params = {
       Bucket: "shopinsta-media", // pass your bucket name
       Key: "dummy.mp4", // file will be saved as testBucket/contacts.csv
-      Body: JSON.stringify(data, null, 2),
+      //   Body: JSON.stringify(data, null, 2),
     };
     s3.upload(params, function (s3Err, data) {
       if (s3Err) throw s3Err;
