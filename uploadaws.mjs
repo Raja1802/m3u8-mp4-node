@@ -81,31 +81,32 @@ async function main() {
     console.log(arr[arr.length - 2]);
     console.log(fileString.endsWith(".mp4"));
     const folderString = "output/" + arr[arr.length - 2];
-    try {
-      if (
-        fileString !== undefined &&
-        fileString.endsWith(".mp4") &&
-        folderString !== undefined
-      ) {
-        await upload(folderString);
-      } else if (
-        fileString !== undefined &&
-        fileString.endsWith(".part") &&
-        folderString !== undefined
-      ) {
-        // await sleep(20000);
-        // main();
-        // deleter(folderString);
-      } else if (fileString === undefined && folderString !== undefined) {
-        // await sleep(20000);
-        // main();
-        // deleter(folderString);
-      }
-    } catch {
+    // try {
+    if (
+      fileString !== undefined &&
+      fileString.endsWith(".mp4") &&
+      folderString !== undefined
+    ) {
+      await upload(folderString);
+    } else if (
+      fileString !== undefined &&
+      fileString.endsWith(".part") &&
+      folderString !== undefined
+    ) {
+      // await sleep(20000);
+      // main();
       // deleter(folderString);
-    } finally {
-      await sleep(2);
+    } else if (fileString === undefined && folderString !== undefined) {
+      // await sleep(20000);
+      // main();
+      // deleter(folderString);
     }
+    // } catch {
+    //   // deleter(folderString);
+
+    // } finally {
+    //   await sleep(2);
+    // }
   }
   // main();
 }
