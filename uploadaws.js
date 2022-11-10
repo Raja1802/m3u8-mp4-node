@@ -1,8 +1,8 @@
 const fs = require("fs");
 const AWS = require("aws-sdk");
 const s3 = new AWS.S3({
-  accessKeyId: "AKIAUJMZRGOBCRUSHHQP",
-  secretAccessKey: "75P6sCv7gladElhqDF8Fk91eqfoXP/FQH099NuVT",
+  accessKeyId: "",
+  secretAccessKey: "",
 });
 const fileName = "dummy.mp4";
 
