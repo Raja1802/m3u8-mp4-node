@@ -80,7 +80,7 @@ async function main() {
     const fileString = arr[arr.length - 1];
     console.log(arr[arr.length - 2]);
     console.log(fileString.endsWith(".mp4"));
-    const folderString = "test/" + arr[arr.length - 2];
+    const folderString = "output/" + arr[arr.length - 2];
     try {
       if (
         fileString !== undefined &&
@@ -102,11 +102,11 @@ async function main() {
         // deleter(folderString);
       }
     } catch {
-      deleter(folderString);
+      // deleter(folderString);
     } finally {
       await sleep(2);
     }
   }
-  main();
+  // main();
 }
 main();
