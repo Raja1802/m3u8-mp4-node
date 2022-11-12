@@ -5,7 +5,7 @@ var url = `mongodb://ajar:${pass}@cluster0-shard-00-00.jomxs.mongodb.net:27017,c
 
 function baseConvert(sttr) {
   var b64string = sttr;
-  console.log(sttr);
+  //   console.log(sttr);
   var buf = Buffer.from(b64string, "base64").toString("utf-8");
   console.log(buf);
 }
@@ -31,7 +31,16 @@ MongoClient.connect(url, function (err, db) {
     .find({})
     .toArray(function (err, result) {
       if (err) throw err;
-      console.log(result);
+      result.forEach((element) => {
+        if (element.player_url !== undefined) {
+          try {
+            axio(element.player_url);
+            // console.log(element.player_url);
+          } catch (error) {
+            console.log("gone");
+          }
+        }
+      });
       db.close();
     });
 });
