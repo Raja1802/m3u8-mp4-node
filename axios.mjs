@@ -18,7 +18,7 @@ function splitter(str) {
 }
 function axio(id) {
   var uri = `https://animixplay.to${id}`;
-  console.log("trigered");
+  console.log(id);
   try {
     axios.get(uri).then((resp) => {
       var str = resp.request.res.responseUrl;
