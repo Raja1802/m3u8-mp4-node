@@ -14,6 +14,7 @@
     "files-from-path": "^0.2.6",
     "fs": "^0.0.1-security",
     "m3u8-to-mp4": "^1.0.0",
+    "mongodb": "^4.11.0",
     "nft.storage": "^7.0.0",
     "path": "^0.12.7"
   }

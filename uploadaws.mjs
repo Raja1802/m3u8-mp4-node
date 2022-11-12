@@ -13,6 +13,18 @@ function deleter(folde) {
   fs.rmSync(folde, { recursive: true, force: true });
 }
 
+function createfolder(id) {
+  const folderName = `/output/${id}`;
+
+  try {
+    if (!fs.existsSync(folderName)) {
+      fs.mkdirSync(folderName);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 function sleep(ms) {
   console.log("waiting...");
   return new Promise((resolve) => setTimeout(resolve, ms));
