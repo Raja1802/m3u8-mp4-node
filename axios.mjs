@@ -3,6 +3,11 @@ import { MongoClient } from "mongodb";
 const pass = encodeURIComponent("Raja@1802");
 var url = `mongodb://ajar:${pass}@cluster0-shard-00-00.jomxs.mongodb.net:27017,cluster0-shard-00-01.jomxs.mongodb.net:27017,cluster0-shard-00-02.jomxs.mongodb.net:27017/?ssl=true&replicaSet=atlas-nv3wvh-shard-0&authSource=admin&retryWrites=true&w=majority`;
 
+function sleep(ms) {
+    console.log("waiting...");
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+  
 function baseConvert(sttr) {
   var b64string = sttr;
   //   console.log(sttr);
@@ -11,6 +16,7 @@ function baseConvert(sttr) {
 }
 
 function splitter(str) {
+  console.log(str);
   if (!str.endsWith(".mp4")) {
     var lista = str.split("#");
     baseConvert(lista[1]);
@@ -18,7 +24,8 @@ function splitter(str) {
 }
 function axio(id) {
   var uri = `https://animixplay.to${id}`;
-  console.log(id);
+  //   console.log(id);
+  await sleep(2000);
   try {
     axios.get(uri).then((resp) => {
       var str = resp.request.res.responseUrl;
