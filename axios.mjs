@@ -24,7 +24,7 @@ function axio(id) {
       splitter(str);
     });
   } catch (error) {
-    console.log("error");
+    console.log(error);
   }
 }
 MongoClient.connect(url, function (err, db) {
@@ -36,7 +36,11 @@ MongoClient.connect(url, function (err, db) {
     .toArray(function (err, result) {
       if (err) throw err;
       result.forEach((element) => {
-        if (element.player_url !== undefined) {
+        if (
+          element.player_url !== undefined &&
+          element.player_url !== "about:blank" &&
+          !element.player_url.startsWith("https://")
+        ) {
           try {
             axio(element.player_url);
             // console.log(element.player_url);
