@@ -18,10 +18,14 @@ function splitter(str) {
 }
 function axio(id) {
   var uri = `https://animixplay.to${id}`;
-  axios.get(uri).then((resp) => {
-    var str = resp.request.res.responseUrl;
-    splitter(str);
-  });
+  try {
+    axios.get(uri).then((resp) => {
+      var str = resp.request.res.responseUrl;
+      splitter(str);
+    });
+  } catch (error) {
+    console.log("error");
+  }
 }
 MongoClient.connect(url, function (err, db) {
   if (err) throw err;
