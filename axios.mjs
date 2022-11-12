@@ -36,7 +36,9 @@ MongoClient.connect(url, function (err, db) {
     .toArray(function (err, result) {
       if (err) throw err;
       result.forEach((element) => {
+        console.log(element);
         if (
+          element.player_url !== null &&
           element.player_url !== undefined &&
           element.player_url !== "about:blank" &&
           !element.player_url.startsWith("https://")
