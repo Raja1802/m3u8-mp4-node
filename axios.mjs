@@ -18,13 +18,14 @@ function splitter(str) {
 }
 function axio(id) {
   var uri = `https://animixplay.to${id}`;
+  console.log("trigered");
   try {
     axios.get(uri).then((resp) => {
       var str = resp.request.res.responseUrl;
       splitter(str);
     });
   } catch (error) {
-    console.log(error);
+    console.log("leg in ditch");
   }
 }
 MongoClient.connect(url, function (err, db) {
@@ -36,7 +37,7 @@ MongoClient.connect(url, function (err, db) {
     .toArray(function (err, result) {
       if (err) throw err;
       result.forEach((element) => {
-        console.log(element);
+        // console.log(element);
         if (
           element.player_url !== null &&
           element.player_url !== undefined &&
