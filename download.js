@@ -4,7 +4,7 @@ const NFTStorage = require("nft.storage").NFTStorage;
 const path = require("path").path;
 const MongoClient = require("mongodb").MongoClient;
 const fs = require("fs");
-const main = require("uploadaws.mjs").main;
+const main = require("./uploadaws.mjs").main;
 // import * as converter from "m3u8-to-mp4";
 var m3u8ToMp4 = require("m3u8-to-mp4");
 var converter = new m3u8ToMp4();
