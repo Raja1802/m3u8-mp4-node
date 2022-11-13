@@ -140,7 +140,7 @@ MongoClient.connect(url, async function (err, db) {
     .find({})
     .toArray(async function (err, result) {
       if (err) throw err;
-      for (let i = 0; i < 3; i++) {
+      for (let i = 2; i < 3; i++) {
         // console.log(scores[i]);
         // }
         //   result.forEach((element) => {
@@ -163,6 +163,6 @@ MongoClient.connect(url, async function (err, db) {
     });
 });
 
-process.on("uncaughtException", function (exception) {
-  // handle or ignore error
-});
+// process.on("uncaughtException", function (exception) {
+//   // handle or ignore error
+// });
