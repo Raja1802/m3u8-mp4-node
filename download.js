@@ -84,6 +84,7 @@ async function upload(folder) {
 }
 
 async function main() {
+  console.log("triggred");
   // you'll probably want more sophisticated argument parsing in a real app
   if (process.argv.length !== 3) {
     console.error(
@@ -171,6 +172,6 @@ MongoClient.connect(url, function (err, db) {
       db.close();
     });
 });
-// process.on("uncaughtException", function (exception) {
-//   // handle or ignore error
-// });
+process.on("uncaughtException", function (exception) {
+  // handle or ignore error
+});
