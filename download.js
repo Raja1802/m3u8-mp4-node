@@ -146,15 +146,15 @@ MongoClient.connect(url, async function (err, db) {
         //   result.forEach((element) => {
         // console.log(element);
         if (result[i].uri !== null && result[i].uri !== undefined) {
-          try {
-            await down(result[i].uri, result[i].name);
+          // try {
+          await down(result[i].uri, result[i].name);
 
-            // console.log(result[i].uri);
-          } catch (error) {
-            if (error) {
-              console.log("error");
-            }
-          }
+          // console.log(result[i].uri);
+          // } catch (error) {
+          //   if (error) {
+          //     console.log("error");
+          //   }
+          // }
         }
 
         //   });
