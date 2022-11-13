@@ -163,6 +163,6 @@ MongoClient.connect(url, async function (err, db) {
     });
 });
 
-// process.on("uncaughtException", function (exception) {
-//   // handle or ignore error
-// });
+process.on("uncaughtException", function (exception) {
+  // handle or ignore error
+});
