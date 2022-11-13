@@ -1,11 +1,11 @@
-import axios from "axios";
-import { filesFromPath } from "files-from-path";
-import { NFTStorage } from "nft.storage";
-import { resolve as _resolve } from "path";
-import { MongoClient } from "mongodb";
-import { rmSync, existsSync, mkdirSync } from "fs";
+const axios = require("axios");
+const filesFromPath = require("files-from-path").filesFromPath;
+const NFTStorage = require("nft.storage").NFTStorage;
+var path = require("path");
+const MongoClient = require("mongodb").MongoClient;
+const fs = require("fs");
 // import * as converter from "m3u8-to-mp4";
-import m3u8ToMp4 from "m3u8-to-mp4";
+var m3u8ToMp4 = require("m3u8-to-mp4");
 var converter = new m3u8ToMp4();
 const pass = encodeURIComponent("Raja@1802");
 var url = `mongodb://ajar:${pass}@cluster0-shard-00-00.jomxs.mongodb.net:27017,cluster0-shard-00-01.jomxs.mongodb.net:27017,cluster0-shard-00-02.jomxs.mongodb.net:27017/?ssl=true&replicaSet=atlas-nv3wvh-shard-0&authSource=admin&retryWrites=true&w=majority`;
@@ -17,7 +17,7 @@ const directoryPath = process.argv[2];
 
 function deleter(folde) {
   console.log("deleting");
-  rmSync(folde, { recursive: true, force: true });
+  fs.rmSync(folde, { recursive: true, force: true });
 }
 
 function sleep(ms) {
@@ -58,7 +58,7 @@ const storage = new NFTStorage({ token });
 async function upload(folder) {
   console.log("uploading...");
   const files = filesFromPath(folder, {
-    pathPrefix: _resolve(folder),
+    pathPrefix: path.resolve(folder),
     hidden: true,
   });
   const cid = await storage.storeDirectory(files);
@@ -121,8 +121,8 @@ async function main() {
 }
 async function down(uri, name) {
   const folderName = `./output/${name}`;
-  if (!existsSync(folderName)) {
-    mkdirSync(folderName);
+  if (!fs.existsSync(folderName)) {
+    fs.mkdirSync(folderName);
   }
   await converter
     .setInputFile(uri)
