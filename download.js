@@ -32,18 +32,20 @@ MongoClient.connect(url, function (err, db) {
     .find({})
     .toArray(function (err, result) {
       if (err) throw err;
-      for (let i = 2; i < 3; i++) {
+      for (let i = 0; i < 3; i++) {
         // console.log(scores[i]);
         // }
         //   result.forEach((element) => {
         // console.log(element);
         if (result[i].uri !== null && result[i].uri !== undefined) {
-          //   try {
-          down(result[i].uri, result[i].name);
-          // console.log(result[i].uri);
-          //   } catch (error) {
-          //     console.log("gone");
-          //   }
+          try {
+            down(result[i].uri, result[i].name);
+            // console.log(result[i].uri);
+          } catch (error) {
+            if (error) {
+              console.log("error");
+            }
+          }
         }
         //   });
       }
