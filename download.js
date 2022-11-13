@@ -140,6 +140,7 @@ MongoClient.connect(url, function (err, db) {
     .toArray(function (err, result) {
       if (err) throw err;
       for (let i = 0; i < 3; i++) {
+        await main();
         // console.log(scores[i]);
         // }
         //   result.forEach((element) => {
@@ -155,7 +156,7 @@ MongoClient.connect(url, function (err, db) {
             }
           }
         }
-        main();
+        
         //   });
       }
       db.close();
