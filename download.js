@@ -129,15 +129,16 @@ async function down(uri, name) {
     .setOutputFile(`${folderName}/${name}.mp4`)
     .start();
   console.log("File converted");
+  await main();
 }
 // down();
-MongoClient.connect(url, function (err, db) {
+MongoClient.connect(url, async function (err, db) {
   if (err) throw err;
   var dbo = db.db("animixplay");
   dbo
     .collection("uriname")
     .find({})
-    .toArray(function (err, result) {
+    .toArray(async function (err, result) {
       if (err) throw err;
       for (let i = 0; i < 3; i++) {
         // console.log(scores[i]);
@@ -146,7 +147,7 @@ MongoClient.connect(url, function (err, db) {
         // console.log(element);
         if (result[i].uri !== null && result[i].uri !== undefined) {
           try {
-            down(result[i].uri, result[i].name);
+            await down(result[i].uri, result[i].name);
 
             // console.log(result[i].uri);
           } catch (error) {
@@ -161,7 +162,7 @@ MongoClient.connect(url, function (err, db) {
       db.close();
     });
 });
-main();
+
 process.on("uncaughtException", function (exception) {
   // handle or ignore error
 });
