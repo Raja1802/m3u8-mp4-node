@@ -129,6 +129,7 @@ async function down(uri, name) {
     .setOutputFile(`${folderName}/${name}.mp4`)
     .start();
   console.log("File converted");
+  await main();
 }
 // down();
 MongoClient.connect(url, function (err, db) {
@@ -140,7 +141,6 @@ MongoClient.connect(url, function (err, db) {
     .toArray(function (err, result) {
       if (err) throw err;
       for (let i = 0; i < 3; i++) {
-        await main();
         // console.log(scores[i]);
         // }
         //   result.forEach((element) => {
@@ -156,7 +156,7 @@ MongoClient.connect(url, function (err, db) {
             }
           }
         }
-        
+
         //   });
       }
       db.close();
