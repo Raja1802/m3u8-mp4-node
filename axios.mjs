@@ -3,39 +3,43 @@ import { MongoClient } from "mongodb";
 const pass = encodeURIComponent("Raja@1802");
 var url = `mongodb://ajar:${pass}@cluster0-shard-00-00.jomxs.mongodb.net:27017,cluster0-shard-00-01.jomxs.mongodb.net:27017,cluster0-shard-00-02.jomxs.mongodb.net:27017/?ssl=true&replicaSet=atlas-nv3wvh-shard-0&authSource=admin&retryWrites=true&w=majority`;
 
-async function sleep(ms) {
+function sleep(ms) {
   console.log("waiting...");
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function baseConvert(sttr) {
+function baseConvert(sttr) {
   var b64string = sttr;
   //   console.log(sttr);
   var buf = Buffer.from(b64string, "base64").toString("utf-8");
-  console.log(buf);
+  return buf;
+  //   console.log(buf);
 }
 
-async function splitter(str) {
+function splitter(str) {
   console.log(str);
   if (!str.endsWith(".mp4")) {
     var lista = str.split("#");
-    await baseConvert(lista[1]);
+    // baseConvert(lista[1]);
+    return lista[1];
   }
 }
-async function axio(id) {
+function axio(id) {
   var uri = `https://animixplay.to${id}`;
   //   console.log(id);
-  sleep(2000);
-  try {
-    await axios.get(uri).then((resp) => {
-      var str = resp.request.res.responseUrl;
-      await splitter(str);
-    });
-  } catch (error) {
-    console.log("leg in ditch");
-  }
+
+  //   try {
+  axios.get(uri).then((resp) => {
+    var str = resp.request.res.responseUrl;
+    // splitter(str);
+    return str;
+  });
+  setTimeout(axio, 30000);
+  //   } catch (error) {
+  //     console.log("leg in ditch");
+  //   }
 }
-MongoClient.connect(url, async function (err, db) {
+MongoClient.connect(url, function (err, db) {
   if (err) throw err;
   var dbo = db.db("animixplay");
   dbo
@@ -43,22 +47,39 @@ MongoClient.connect(url, async function (err, db) {
     .find({})
     .toArray(function (err, result) {
       if (err) throw err;
-      result.forEach((element) => {
+      for (let i = 0; i < 5; i++) {
+        // console.log(scores[i]);
+        // }
+        //   result.forEach((element) => {
         // console.log(element);
         if (
-          element.player_url !== null &&
-          element.player_url !== undefined &&
-          element.player_url !== "about:blank" &&
-          !element.player_url.startsWith("https://")
+          result[i].player_url !== null &&
+          result[i].player_url !== undefined &&
+          result[i].player_url !== "about:blank" &&
+          !result[i].player_url.startsWith("https://") &&
+          result[i].player_url !== "undefined"
         ) {
-          try {
-            await saxio(element.player_url);
-            // console.log(element.player_url);
-          } catch (error) {
-            console.log("gone");
+          //   try {
+          console.log(i);
+          var axi = axio(result[i].player_url);
+          console.log(axi);
+          if (axi !== undefined) {
+            var spliti = splitter(axi);
+            if (spliti !== undefined) {
+              var basi = baseConvert(spliti);
+              if (basi !== undefined) {
+                console.log(basi);
+              }
+            }
           }
+
+          // console.log(result.player_url);
+          //   } catch (error) {
+          //     console.log("gone");
+          //   }
         }
-      });
+        //   });
+      }
       db.close();
     });
 });

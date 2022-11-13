@@ -7,16 +7,18 @@ MongoClient.connect(url, function (err, db) {
   if (err) throw err;
   var dbo = db.db("animixplay");
   dbo
-    .collection("animixplay")
+    .collection("uriname")
     .find({})
-    .toArray(function (err, result) {
+    .toArray(async function (err, result) {
       if (err) throw err;
+
+      // return result;
       result.forEach((element) => {
-        if (element.player_url !== undefined) {
-          console.log(element.player_url);
+        if (element.uri !== undefined) {
+          console.log(element.uri);
         }
       });
-      //   console.log(result);
       db.close();
+      // console.log(result);
     });
 });
