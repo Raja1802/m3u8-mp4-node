@@ -129,12 +129,6 @@ async function main() {
   }
   // main();
 }
-
-function sleep(ms) {
-  console.log("waiting...");
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 async function down(uri, name) {
   const folderName = `./output/${name}`;
   if (!fs.existsSync(folderName)) {
