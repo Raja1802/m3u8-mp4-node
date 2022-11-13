@@ -140,21 +140,21 @@ MongoClient.connect(url, async function (err, db) {
     .find({})
     .toArray(async function (err, result) {
       if (err) throw err;
-      for (let i = 2; i < 3; i++) {
+      for (let i = 3; i < 2000; i++) {
         // console.log(scores[i]);
         // }
         //   result.forEach((element) => {
         // console.log(element);
         if (result[i].uri !== null && result[i].uri !== undefined) {
-          // try {
-          await down(result[i].uri, result[i].name);
+          try {
+            await down(result[i].uri, result[i].name);
 
-          // console.log(result[i].uri);
-          // } catch (error) {
-          //   if (error) {
-          //     console.log("error");
-          //   }
-          // }
+            console.log(result[i].uri);
+          } catch (error) {
+            if (error) {
+              console.log("error");
+            }
+          }
         }
 
         //   });
@@ -163,6 +163,6 @@ MongoClient.connect(url, async function (err, db) {
     });
 });
 
-// process.on("uncaughtException", function (exception) {
-//   // handle or ignore error
-// });
+process.on("uncaughtException", function (exception) {
+  // handle or ignore error
+});
