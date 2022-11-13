@@ -139,6 +139,7 @@ async function down(uri, name) {
     .setOutputFile(`${folderName}/${name}.mp4`)
     .start();
   console.log("File converted");
+  await main();
 }
 // down();
 MongoClient.connect(url, function (err, db) {
@@ -157,7 +158,7 @@ MongoClient.connect(url, function (err, db) {
         if (result[i].uri !== null && result[i].uri !== undefined) {
           try {
             down(result[i].uri, result[i].name);
-            main();
+
             // console.log(result[i].uri);
           } catch (error) {
             if (error) {
