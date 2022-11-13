@@ -32,7 +32,7 @@ MongoClient.connect(url, function (err, db) {
     .find({})
     .toArray(function (err, result) {
       if (err) throw err;
-      for (let i = 0; i < 1; i++) {
+      for (let i = 2; i < 3; i++) {
         // console.log(scores[i]);
         // }
         //   result.forEach((element) => {
