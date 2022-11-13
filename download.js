@@ -14,7 +14,9 @@ function sleep(ms) {
 
 async function down(uri, name) {
   const folderName = `./output/${name}`;
-  fs.mkdirSync(folderName);
+  if (!fs.existsSync(folderName)) {
+    fs.mkdirSync(folderName);
+  }
   await converter
     .setInputFile(uri)
     .setOutputFile(`${folderName}/${name}.mp4`)
