@@ -1,7 +1,7 @@
 const axios = require("axios").default;
 const filesFromPath = require("files-from-path").filesFromPath;
 const NFTStorage = require("nft.storage").NFTStorage;
-const path = require("path").path;
+var path = require("path");
 const MongoClient = require("mongodb").MongoClient;
 const fs = require("fs");
 // import * as converter from "m3u8-to-mp4";
