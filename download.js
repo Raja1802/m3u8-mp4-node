@@ -25,7 +25,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function sendData(CID, folder) {
+async function sendData(CID, folder) {
   console.log("sending data...");
   const newPost = {
     CID: CID,
@@ -62,6 +62,7 @@ async function upload(folder) {
     hidden: true,
   });
   const cid = await storage.storeDirectory(files);
+  console.log("storef");
   if (cid !== undefined) {
     await sendData(cid, folder);
   }
