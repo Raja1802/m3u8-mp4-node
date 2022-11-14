@@ -89,7 +89,7 @@ async function main() {
     const fileString = arr[arr.length - 1];
     console.log(arr[arr.length - 2]);
     console.log(fileString.endsWith(".mp4"));
-    const folderString = "output/" + arr[arr.length - 2];
+    const folderString = "output2/" + arr[arr.length - 2];
     // try {
     if (
       fileString !== undefined &&
@@ -120,7 +120,7 @@ async function main() {
   // main();
 }
 async function down(uri, name) {
-  const folderName = `./output/${name}`;
+  const folderName = `./output2/${name}`;
   if (!fs.existsSync(folderName)) {
     fs.mkdirSync(folderName);
   }
@@ -140,16 +140,12 @@ MongoClient.connect(url, async function (err, db) {
     .find({})
     .toArray(async function (err, result) {
       if (err) throw err;
-      for (let i = 4000; i < 6000; i++) {
+      for (let i = 6000; i < 8000; i++) {
         // console.log(scores[i]);
         // }
         //   result.forEach((element) => {
         // console.log(element);
-        if (
-          result[i].uri !== null &&
-          result[i].uri !== undefined &&
-          !result[i].uri.endsWith(".mp4")
-        ) {
+        if (result[i].uri !== null && result[i].uri !== undefined) {
           try {
             await down(result[i].uri, result[i].name);
 
