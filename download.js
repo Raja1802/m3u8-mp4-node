@@ -140,7 +140,7 @@ MongoClient.connect(url, async function (err, db) {
     .find({})
     .toArray(async function (err, result) {
       if (err) throw err;
-      for (let i = 2000; i < 4000; i++) {
+      for (let i = 4000; i < 6000; i++) {
         // console.log(scores[i]);
         // }
         //   result.forEach((element) => {
