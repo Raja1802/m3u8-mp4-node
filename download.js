@@ -10,6 +10,8 @@ var converter = new m3u8ToMp4();
 const pass = encodeURIComponent("Raja@1802");
 var url = `mongodb://ajar:${pass}@cluster0-shard-00-00.jomxs.mongodb.net:27017,cluster0-shard-00-01.jomxs.mongodb.net:27017,cluster0-shard-00-02.jomxs.mongodb.net:27017/?ssl=true&replicaSet=atlas-nv3wvh-shard-0&authSource=admin&retryWrites=true&w=majority`;
 
+var fol = "output3";
+
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGJhNWQzZTU2OTlDRTllZDYwMUZhRkUwYzhiZmI1MzJCYjRFYWI5OTgiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY2NTQyNTUzNDk0OCwibmFtZSI6InNkc2QifQ.3wabmCtAPSt4_6vNdD0NCLMeZIHvMthxfs9gETb5mq4";
 
@@ -89,7 +91,7 @@ async function main() {
     const fileString = arr[arr.length - 1];
     console.log(arr[arr.length - 2]);
     console.log(fileString.endsWith(".mp4"));
-    const folderString = "output2/" + arr[arr.length - 2];
+    const folderString = `${fol}/` + arr[arr.length - 2];
     // try {
     if (
       fileString !== undefined &&
@@ -120,7 +122,7 @@ async function main() {
   // main();
 }
 async function down(uri, name) {
-  const folderName = `./output2/${name}`;
+  const folderName = `./${fol}/${name}`;
   if (!fs.existsSync(folderName)) {
     fs.mkdirSync(folderName);
   }
@@ -140,7 +142,7 @@ MongoClient.connect(url, async function (err, db) {
     .find({})
     .toArray(async function (err, result) {
       if (err) throw err;
-      for (let i = 6000; i < 8000; i++) {
+      for (let i = 8000; i < 10000; i++) {
         // console.log(scores[i]);
         // }
         //   result.forEach((element) => {
