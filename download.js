@@ -145,7 +145,11 @@ MongoClient.connect(url, async function (err, db) {
         // }
         //   result.forEach((element) => {
         // console.log(element);
-        if (result[i].uri !== null && result[i].uri !== undefined) {
+        if (
+          result[i].uri !== null &&
+          result[i].uri !== undefined &&
+          !result[i].uri.endsWith(".mp4")
+        ) {
           try {
             await down(result[i].uri, result[i].name);
 
