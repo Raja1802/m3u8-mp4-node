@@ -10,7 +10,7 @@ var converter = new m3u8ToMp4();
 const pass = encodeURIComponent("Raja@1802");
 var url = `mongodb://ajar:${pass}@cluster0-shard-00-00.jomxs.mongodb.net:27017,cluster0-shard-00-01.jomxs.mongodb.net:27017,cluster0-shard-00-02.jomxs.mongodb.net:27017/?ssl=true&replicaSet=atlas-nv3wvh-shard-0&authSource=admin&retryWrites=true&w=majority`;
 
-var fol = "output2";
+var fol = "output3";
 var x = 86000;
 var y = 100000;
 const token =
