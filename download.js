@@ -123,6 +123,7 @@ async function main() {
   // main();
 }
 async function down(uri, name) {
+  console.log("download trired");
   const folderName = `./${fol}/${name}`;
   if (!fs.existsSync(folderName)) {
     fs.mkdirSync(folderName);
