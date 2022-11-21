@@ -136,7 +136,7 @@ async function down(uri, name) {
 }
 
 async function getData(foldName) {
-  console.log("getdata triggred")
+  console.log("getdata triggred");
   try {
     const resp = await axios.get(
       `https://ani022.herokuapp.com/api/animetracker/?search=${foldName}`
@@ -162,18 +162,22 @@ MongoClient.connect(url, async function (err, db) {
         //   result.forEach((element) => {
         // console.log(element);
         var cons = getData(result[i].name);
-        cons.then((res) =>{ 
-        if (result[i].uri !== null && result[i].uri !== undefined && res === 0) {
-          try {
-            console.log(result[i].uri);
-            await down(result[i].uri, result[i].name);
-          } catch (error) {
-            if (error) {
-              console.log("error");
+        cons.then((res) => {
+          if (
+            result[i].uri !== null &&
+            result[i].uri !== undefined &&
+            res === 0
+          ) {
+            try {
+              console.log(result[i].uri);
+              down(result[i].uri, result[i].name);
+            } catch (error) {
+              if (error) {
+                console.log("error");
+              }
             }
           }
-        }
-      });
+        });
         //   });
       }
       db.close();
