@@ -166,11 +166,7 @@ MongoClient.connect(url, async function (err, db) {
         //   result.forEach((element) => {
         // console.log(element);
 
-        if (
-          result[i].uri !== null &&
-          result[i].uri !== undefined &&
-          res === 0
-        ) {
+        if (result[i].uri !== null && result[i].uri !== undefined) {
           try {
             console.log(result[i].uri);
             await getData(result[i].uri, result[i].name);
