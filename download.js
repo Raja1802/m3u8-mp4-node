@@ -136,6 +136,7 @@ async function down(uri, name) {
 }
 
 async function getData(foldName) {
+  console.log("getdata triggred")
   try {
     const resp = await axios.get(
       `https://ani022.herokuapp.com/api/animetracker/?search=${foldName}`
