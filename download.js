@@ -37,7 +37,7 @@ async function sendData(CID, folder) {
 
   try {
     const resp = axios
-      .post("https://ani02.herokuapp.com/api/animetracker/", newPost)
+      .post("https://ani022.herokuapp.com/api/animetracker/", newPost)
       .then((res) => {
         console.log(res.data);
         if (res.data.id !== undefined) {
@@ -134,6 +134,18 @@ async function down(uri, name) {
   console.log("File converted");
   await main();
 }
+
+async function getData(foldName) {
+  try {
+    const resp = await axios.get(
+      `https://ani022.herokuapp.com/api/animetracker/?search=${foldName}`
+    );
+    return resp.data.count;
+  } catch (err) {
+    // Handle Error Here
+    console.error(err);
+  }
+}
 // down();
 MongoClient.connect(url, async function (err, db) {
   if (err) throw err;
@@ -148,7 +160,9 @@ MongoClient.connect(url, async function (err, db) {
         // }
         //   result.forEach((element) => {
         // console.log(element);
-        if (result[i].uri !== null && result[i].uri !== undefined) {
+        var cons = getData(result[i].name);
+        cons.then((res) =>{ 
+        if (result[i].uri !== null && result[i].uri !== undefined && res ==0) {
           try {
             console.log(result[i].uri);
             await down(result[i].uri, result[i].name);
@@ -158,7 +172,7 @@ MongoClient.connect(url, async function (err, db) {
             }
           }
         }
-
+      });
         //   });
       }
       db.close();
