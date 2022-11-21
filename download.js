@@ -161,8 +161,8 @@ MongoClient.connect(url, async function (err, db) {
         // }
         //   result.forEach((element) => {
         // console.log(element);
-        var cons = getData(result[i].name);
-        cons.then((res) => {
+        var cons = await getData(result[i].name);
+        cons.then(async (res) => {
           if (
             result[i].uri !== null &&
             result[i].uri !== undefined &&
@@ -170,7 +170,7 @@ MongoClient.connect(url, async function (err, db) {
           ) {
             try {
               console.log(result[i].uri);
-              down(result[i].uri, result[i].name);
+              await down(result[i].uri, result[i].name);
             } catch (error) {
               if (error) {
                 console.log("error");
