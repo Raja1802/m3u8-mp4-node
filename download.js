@@ -136,13 +136,16 @@ async function down(uri, name) {
   await main();
 }
 
-async function getData(foldName) {
+async function getData(uri, foldName) {
   console.log("getdata triggred");
   try {
     const resp = await axios.get(
       `https://ani022.herokuapp.com/api/animetracker/?search=${foldName}`
     );
-    return resp.data.count;
+    // return resp.data.count;
+    if (resp.data.count == 0) {
+      await down(uri, foldName);
+    }
   } catch (err) {
     // Handle Error Here
     console.error(err);
@@ -162,23 +165,23 @@ MongoClient.connect(url, async function (err, db) {
         // }
         //   result.forEach((element) => {
         // console.log(element);
-        var cons = await getData(result[i].name);
-        cons.then(async (res) => {
-          if (
-            result[i].uri !== null &&
-            result[i].uri !== undefined &&
-            res === 0
-          ) {
-            try {
-              console.log(result[i].uri);
-              await down(result[i].uri, result[i].name);
-            } catch (error) {
-              if (error) {
-                console.log("error");
-              }
+
+        if (
+          result[i].uri !== null &&
+          result[i].uri !== undefined &&
+          res === 0
+        ) {
+          try {
+            console.log(result[i].uri);
+            await getData(result[i].uri, result[i].name);
+            // await down(result[i].uri, result[i].name);
+          } catch (error) {
+            if (error) {
+              console.log("error");
             }
           }
-        });
+        }
+
         //   });
       }
       db.close();
