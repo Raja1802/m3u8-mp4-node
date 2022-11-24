@@ -135,7 +135,22 @@ async function down(uri, name) {
   console.log("File converted");
   await main();
 }
-
+async function convertData(foldName, rurl) {
+  var asse = rurl.split("#");
+  var buf = new Buffer.from(asse[1], "base64").toString("utf-8"); // Ta-da
+  await down(buf, foldName);
+  console.log(buf);
+}
+async function getURI(foldName) {
+  try {
+    const resp = await axios.get(`https://animixplay.to/api/${foldName}`);
+    // return resp.request.res.responseUrl;
+    await convertData(foldName, resp.request.res.responseUrl);
+  } catch (err) {
+    // Handle Error Here
+    console.error(err);
+  }
+}
 async function getData(uri, foldName) {
   console.log("getdata triggred");
   try {
@@ -144,7 +159,8 @@ async function getData(uri, foldName) {
     );
     // return resp.data.count;
     if (resp.data.count == 0) {
-      await down(uri, foldName);
+      // await down(uri, foldName);
+      await getURI(foldName);
     }
   } catch (err) {
     // Handle Error Here
