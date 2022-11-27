@@ -37,7 +37,7 @@ async function sendData(CID, folder) {
 
   try {
     const resp = axios
-      .post("https://ani022.herokuapp.com/api/animetracker/", newPost)
+      .post("https://ani022.onrender.com/api/animetracker/", newPost)
       .then((res) => {
         console.log(res.data);
         if (res.data.id !== undefined) {
@@ -155,7 +155,7 @@ async function getData(uri, foldName) {
   console.log("getdata triggred");
   try {
     const resp = await axios.get(
-      `https://ani022.herokuapp.com/api/animetracker/?search=${foldName}`
+      `https://ani022.onrender.com/api/animetracker/?search=${foldName}`
     );
     // return resp.data.count;
     if (resp.data.count == 0) {
