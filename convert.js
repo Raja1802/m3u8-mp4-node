@@ -4,9 +4,9 @@ var converter = new m3u8ToMp4();
 (async function () {
   await converter
     .setInputFile(
-      "https://v.vrv.co/evs3/1b7601d603f0b5b786d56132f116402e/assets/8ff8b3e2af27da90c30f74d69c040eab_,4544866.mp4,4544870.mp4,4544862.mp4,4544854.mp4,4544858.mp4,.urlset/master.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly92LnZydi5jby9ldnMzLzFiNzYwMWQ2MDNmMGI1Yjc4NmQ1NjEzMmYxMTY0MDJlL2Fzc2V0cy84ZmY4YjNlMmFmMjdkYTkwYzMwZjc0ZDY5YzA0MGVhYl8sNDU0NDg2Ni5tcDQsNDU0NDg3MC5tcDQsNDU0NDg2Mi5tcDQsNDU0NDg1NC5tcDQsNDU0NDg1OC5tcDQsLnVybHNldC9tYXN0ZXIubTN1OCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTY2ODEyMTE2NX19fV19&Signature=QHZUaX3oqUp~8-mjWpRJ0QsbhjdmEryj7-kUFFwtvccRa8OgHGYjQ592BLKqVuQQLNJOjM0li-uimGKrF5j4XqkAq5ZcBUMAxTcFJplQTbdKhQLG~ATZxe7~eQaz9dqcmNh3owpIzc3IA3p3DaUiITRBTQcRZsHbVdjiJpTX5BgSG5Ro7WZS9LfmhEnLDRyTfbB9Ykv2qXZlVzB7Ak~0clh13YYibdX0vxDzkU~MxhTFj7pN7ZF048ocRIR6D~i88c~U~SnjSTRRhssaEv~LzQ1KoEj2JQWYaVITz~XszMGxhxZiEZZhgSxXa4B2uFTAfjzoFL7Y-dgrAdSr~~lFlw__&Key-Pair-Id=APKAJMWSQ5S7ZB3MF5VA"
+      "https://v.vrv.co/evs3/74d3ae3a44faae13f9bb75337644be76/assets/f7c7da9e8d2147b775d73ee8d14dfc3e_,4849348.mp4,4849357.mp4,4849339.mp4,4849321.mp4,4849330.mp4,.urlset/master.m3u8?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cCo6Ly92LnZydi5jby9ldnMzLzc0ZDNhZTNhNDRmYWFlMTNmOWJiNzUzMzc2NDRiZTc2L2Fzc2V0cy9mN2M3ZGE5ZThkMjE0N2I3NzVkNzNlZThkMTRkZmMzZV8sNDg0OTM0OC5tcDQsNDg0OTM1Ny5tcDQsNDg0OTMzOS5tcDQsNDg0OTMyMS5tcDQsNDg0OTMzMC5tcDQsLnVybHNldC9tYXN0ZXIubTN1OCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTY3MDc2NDY3NH19fV19&Signature=eKikZ0RQRKJpeIxHKxe64cw~rUiazNe6N7xKG3pk0q1w~tzsTxqkyzaIH6Irx6SlCKNcj57KjcLmUooH5PTQFE~G1cnQdKj-JH5d13CrLjrSar-rh~o9DyxgzZlVt8D8atZq3PCvnP77Tz-5Uam8HcfgBlms9vaXwPXOa9ur~cKsLInXWAx81cYISoO6EZRrw7jxHf6Pntz9YK6R-ELhxUkcCNYCCp-yxd-1dQj6-YizJAhxlgMlkQ5YNvha9YFpdwtmmkD4Zl3rC9MBr4raUhMVNy4B4I7Ah0B26EKk1ROaiBXi6X0L1Vc8JLyQI3VGwcMSMw7v~LrKL87r-N4oMQ__&Key-Pair-Id=APKAJMWSQ5S7ZB3MF5VA"
     )
-    .setOutputFile("./output/output/dummy.mp4")
+    .setOutputFile("./output/outt.m3u8")
     .start();
 
   console.log("File converted");
