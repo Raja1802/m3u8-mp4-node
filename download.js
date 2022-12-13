@@ -21,6 +21,7 @@ const directoryPath = process.argv[2];
 var folder_deleter = `./${fol}/`;
 
 function completeDelete() {
+  console.log("complete delete triggred");
   fs.readdir(folder_deleter, (err, files) => {
     if (err) throw err;
 
