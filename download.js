@@ -11,13 +11,26 @@ const pass = encodeURIComponent("Raja@1802");
 var url = `mongodb://ajar:${pass}@cluster0-shard-00-00.jomxs.mongodb.net:27017,cluster0-shard-00-01.jomxs.mongodb.net:27017,cluster0-shard-00-02.jomxs.mongodb.net:27017/?ssl=true&replicaSet=atlas-nv3wvh-shard-0&authSource=admin&retryWrites=true&w=majority`;
 // server - 2 last num 90000 - 5k diff
 // server - 1 last num 58000 - 14k diff
-var fol = "output";
-var x = 95000;
-var y = 90000;
+var fol = "output3";
+var x = 105000;
+var y = 100000;
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGJhNWQzZTU2OTlDRTllZDYwMUZhRkUwYzhiZmI1MzJCYjRFYWI5OTgiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY2NTQyNTUzNDk0OCwibmFtZSI6InNkc2QifQ.3wabmCtAPSt4_6vNdD0NCLMeZIHvMthxfs9gETb5mq4";
 
 const directoryPath = process.argv[2];
+var folder_deleter = `./${fol}/`;
+
+function completeDelete() {
+  fs.readdir(folder_deleter, (err, files) => {
+    if (err) throw err;
+
+    for (const dolder of files) {
+      console.log(dolder + " : File Deleted Successfully.");
+
+      fs.rmSync(folder_deleter + dolder, { recursive: true, force: true });
+    }
+  });
+}
 
 function deleter(folde) {
   console.log("deleting");
@@ -38,7 +51,7 @@ async function sendData(CID, folder) {
 
   try {
     const resp = axios
-      .post("https://ani022.onrender.com/api/animetracker/", newPost)
+      .post("https://ani023.onrender.com/api/animetracker/", newPost)
       .then((res) => {
         console.log(res.data);
         if (res.data.id !== undefined) {
@@ -153,10 +166,11 @@ async function getURI(foldName) {
   }
 }
 async function getData(uri, foldName) {
+  completeDelete();
   console.log("getdata triggred");
   try {
     const resp = await axios.get(
-      `https://ani022.onrender.com/api/animetracker/?search=${foldName}`
+      `https://ani023.onrender.com/api/animetracker/?search=${foldName}`
     );
     // return resp.data.count;
     if (resp.data.count == 0) {
