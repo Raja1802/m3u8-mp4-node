@@ -11,7 +11,7 @@ const pass = encodeURIComponent("Raja@1802");
 var url = `mongodb://ajar:${pass}@cluster0-shard-00-00.jomxs.mongodb.net:27017,cluster0-shard-00-01.jomxs.mongodb.net:27017,cluster0-shard-00-02.jomxs.mongodb.net:27017/?ssl=true&replicaSet=atlas-nv3wvh-shard-0&authSource=admin&retryWrites=true&w=majority`;
 // server - 2 last num 90000 - 5k diff
 // server - 1 last num 58000 - 14k diff
-var fol = "output2";
+var fol = "output";
 var x = 65000;
 var y = 60000;
 const token =
